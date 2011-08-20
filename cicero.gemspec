@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Cicero::VERSION
   s.authors     = ["Rogelio Guzman"]
   s.email       = ["chinog9@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/rogeliog/cicero"
   s.summary     = %q{A lorem Ipsum generator}
   s.description = %q{A lorem Ipsum generator}
 
