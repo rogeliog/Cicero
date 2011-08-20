@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe LoremText do
+describe CiceroText do
   describe "#text" do
     context 'With locale parameter' do
       it 'Returns the desired verision' do
-        LoremText.text('ES').should eql(LoremText::ES)
+        CiceroText.text('ES').should eql(CiceroText::ES)
       end
     end
     context 'Without locale parameter' do
       it 'Returns the latin verision' do
-        LoremText.text.should eql(LoremText::LA)
+        CiceroText.text.should eql(CiceroText::LA)
       end
     end
   end

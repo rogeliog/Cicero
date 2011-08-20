@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'lorem/lorem_text'
+require 'cicero/cicero_text'
 
-require 'lorem' # and any other gems you need
+require 'cicero' # and any other gems you need
 
 RSpec.configure do |config|
 end
