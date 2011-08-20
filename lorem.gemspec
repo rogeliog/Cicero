@@ -11,6 +11,9 @@ Gem::Specification.new do |s|
   s.summary     = %q{A lorem Ipsum generator}
   s.description = %q{A lorem Ipsum generator}
 
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "ruby-debug19"
+
   s.rubyforge_project = "lorem"
 
   s.files         = `git ls-files`.split("\n")
