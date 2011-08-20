@@ -17,30 +17,47 @@ module Lorem
     text = full
   end
 
+  def self.word
+    words
+  end
+
+  def self.words(number = 1)
+    text = full
+    str = ""
+    number.times{ str += "#{text.split(' ')[rand(text.split(' ').size) - 1]} "}
+    str.strip.gsub(/[,.;'"!?]/,'')
+  end
+
   def self.sentence
-    self.sentences
+    sentences
   end
 
   def self.sentences(number = 1)
     text = full
     str = ""
-    number.times { str += "#{text.split('. ')[rand(text.split('. ').size)-1].strip}. "}
+    number.times { str += "#{text.split('. ')[rand(text.split('. ').size) - 1].strip}. "}
     str.strip
   end
 
-  # def self.paragraph
-  #   self.paragraphs
-  # end
+  def self.paragraph
+    self.paragraphs
+  end
 
-  # def self.paragraphs(number = 1)
-  #   str= ""
-  #   number.times{ str += self.sentences(5)}
-  #   str
-  # end
+  def self.paragraphs(number = 1)
+    text = full
+    str= ""
+    number.times do 
+      7.times { str += "#{text.split('. ')[rand(text.split('. ').size) - 1].strip}. "}
+      str.strip!
+      str += "\n"
+    end
+    str
+  end
 
 
-  protected
+  private
   def self.full
     LoremText.text(@locale)
   end
+
 end

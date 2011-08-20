@@ -9,7 +9,7 @@ describe LoremText do
     end
     context 'Without locale parameter' do
       it 'Returns the latin verision' do
-        LoremText.text.should eql(LoremText::FULL)
+        LoremText.text.should eql(LoremText::LA)
       end
     end
   end
