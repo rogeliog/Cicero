@@ -12,6 +12,10 @@ module Cicero
   def self.locale
     @locale
   end
+
+  def self.locales
+    CiceroText.locales
+  end
   
   def self.full_text
     text = full

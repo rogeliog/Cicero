@@ -19,6 +19,14 @@ describe Cicero do
     end
   end
 
+  describe "locales" do
+    subject { Cicero.locales }
+    it { should_not be_nil }
+    it { should be_a_kind_of Array }
+    it { should_not be_empty }
+    it { should include 'LA' }
+  end
+
   describe "#full_text" do
     it 'Returns the full lorem ipsum text' do
       Cicero.full_text.should eql(CiceroText::LA)

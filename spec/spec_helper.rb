@@ -1,8 +1,9 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'cicero/cicero_text'
+# encoding: UTF-8
 
-require 'cicero' # and any other gems you need
+require "rspec"
+require_relative '../lib/cicero/cicero_text.rb'
+
+require_relative '../lib/cicero.rb' # and any other gems you need
 
 RSpec.configure do |config|
 end
