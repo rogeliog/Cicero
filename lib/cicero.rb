@@ -27,25 +27,17 @@ module Cicero
     words
   end
 
-  def self.words(number = 1)
-    text = full
-    str = ""
-    number.times{ str += "#{splitter(" ")} "}
-    str.strip.gsub(/[,.;'"!?]/,'')
+  def self.words(n = 1)
+    (1..n).reduce("") do |s,j|
+      s << "#{splitter2(" ")} "
+    end.strip.gsub(/[,.;'"!?]/,'')
   end
 
   def self.sentence
     sentences
   end
 
-  def self.sentences(number = 1)
-    text = full
-    str = ""
-    number.times { str += "#{splitter(". ").strip}. "}
-    str.strip
-  end
-
-  def self.sents(n = 1)
+  def self.sentences(n = 1)
     (1..n).reduce("") do |s,j|
       s << "#{splitter2(". ").strip}. "
     end
@@ -72,6 +64,6 @@ module Cicero
   end
 
   def self.splitter2( on )
-    full.split(". ").cicero_rand 
+    full.split( on ).cicero_rand 
   end
 end
