@@ -1,0 +1,1 @@
+v0.0.2iain Added a `locales` method, so it's easy to list them and easier to access them programatically. Improved speed of `paragraphs`, `sentences` and `words`  methods by about 2x. 
