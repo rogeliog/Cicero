@@ -1,5 +1,6 @@
-require "cicero/version"
-require "cicero/cicero_text"
+# encoding: UTF-8
+
+require_relative "./cicero/cicero_text.rb"
 
 module Cicero
   
@@ -45,6 +46,13 @@ module Cicero
 
   def self.paragraph
     self.paragraphs
+  end
+  
+  require_relative "./cicero/ext/Array.rb"
+  def self.paras(n = 1 )
+    (1..n).reduce("") do |s,j|
+      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << full.split(". ").cicero_rand.strip }.join(". ")
+    end
   end
 
   def self.paragraphs(number = 1)
