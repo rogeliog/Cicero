@@ -95,19 +95,6 @@ describe Cicero do
     end
   end
 
-  describe '#paras' do
-    context 'With no parameters' do
-      it 'Returns a single paragraph' do
-        Cicero.paras.split('. ').size.should eql 7
-      end
-    end
-    context 'With parameters' do
-      it "Returns 'n' paragraphs" do
-        Cicero.paragraphs(3).split('. ').size.should eql (19)
-      end
-    end
-  end
-
   describe '#paragraphs' do
     context 'With no parameters' do
       it 'Returns a single paragraph' do

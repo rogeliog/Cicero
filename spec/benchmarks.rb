@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+# Benchmarks for paragraphs method prior to commit 0cee2f720ed98caea5f165f48a3d53eba727bb71
+
 require_relative "../lib/cicero.rb"
 require "benchmark"
 
