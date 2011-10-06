@@ -28,7 +28,7 @@ module Cicero
   end
 
   def self.words(n = 1)
-    (1..n).reduce("") do |s,j|
+    (1..n).reduce("") do |s,_|
       s << "#{splitter2(" ")} "
     end.strip.gsub(/[,.;'"!?]/,'')
   end
@@ -38,7 +38,7 @@ module Cicero
   end
 
   def self.sentences(n = 1)
-    (1..n).reduce("") do |s,j|
+    (1..n).reduce("") do |s,_|
       s << "#{splitter2(". ").strip}. "
     end
   end
@@ -48,7 +48,7 @@ module Cicero
   end
   
   def self.paragraphs(n = 1 )
-    (1..n).reduce("") do |s,j|
+    (1..n).reduce("") do |s,_|
       s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter2(". ")}.map{|x| x.strip }.join(". ")
     end
   end
