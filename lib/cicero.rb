@@ -49,7 +49,7 @@ module Cicero
   
   def self.paragraphs(n = 1 )
     (1..n).reduce("") do |s,_|
-      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter2(". ")}.map{|x| x.strip }.join(". ")
+      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter2(". ")}.map{|x| x.strip }.join(". ").concat( ".\n" )
     end
   end
 

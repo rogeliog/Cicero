@@ -97,14 +97,28 @@ describe Cicero do
 
   describe '#paragraphs' do
     context 'With no parameters' do
-      it 'Returns a single paragraph' do
-        Cicero.paragraphs.split('. ').size.should eql 7
-      end
+      subject { Cicero.paragraphs }
+      it { subject.split('. ').should have_exactly(7).sentences }
+      it { should end_with "\n" }
+      it { should match /\A\w[^\n]+\Z/ }
     end
 
     context 'With parameters' do
-      it "Returns 'n' paragraphs" do
-        Cicero.paragraphs(3).split('. ').size.should eql (19)
+      context "for 1 paragraph" do
+        let(:n) { 1 }
+        subject { Cicero.paragraphs( n ) }
+        it { should end_with "\n" }
+        it { should match /\A\w[^\n]+\Z/ }
+        it { subject.split("\n").should have_exactly(n).paragraphs }
+        it { subject.split('. ').should have_exactly(7).sentences }
+      end
+      context "for greater than 1 paragraph" do
+        let(:n) { rand(7) + 2 }
+        subject { Cicero.paragraphs( n ) }
+        it { should end_with "\n" }
+        it { should_not match /\A\w[^\n]+\Z/ }
+        it { subject.split("\n").should have_exactly(n).paragraphs }
+        it { subject.split("\n").join(" ").split('. ').should have_exactly(n * 7).sentences }
       end
     end
   end
