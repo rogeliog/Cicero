@@ -29,7 +29,7 @@ module Cicero
 
   def self.words(n = 1)
     (1..n).reduce("") do |s,_|
-      s << "#{splitter2(" ")} "
+      s << "#{splitter(" ")} "
     end.strip.gsub(/[,.;'"!?]/,'')
   end
 
@@ -39,7 +39,7 @@ module Cicero
 
   def self.sentences(n = 1)
     (1..n).reduce("") do |s,_|
-      s << "#{splitter2(". ").strip}. "
+      s << "#{splitter(". ").strip}. "
     end
   end
 
@@ -49,7 +49,7 @@ module Cicero
   
   def self.paragraphs(n = 1 )
     (1..n).reduce("") do |s,_|
-      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter2(". ")}.map{|x| x.strip }.join(". ").concat( ".\n" )
+      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter(". ")}.map{|x| x.strip }.join(". ").concat( ".\n" )
     end
   end
 
@@ -59,11 +59,8 @@ module Cicero
     CiceroText.text(@locale)
   end
 
-  def self.splitter( on )
-    full.split(on)[rand(full.split(on).size) - 1]
-  end
 
-  def self.splitter2( on )
+  def self.splitter( on )
     full.split( on ).cicero_rand 
   end
 end
