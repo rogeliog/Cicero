@@ -5,7 +5,7 @@
 require_relative "../lib/cicero.rb"
 require "benchmark"
 
-T= 1000
+T= 10000
 r = []
 max = 7
 T.times {|_| r << ( 1 + rand( max ) ) }
@@ -17,12 +17,11 @@ puts T.class
 
 Benchmark.bm do |b|
 
-  b.report( "orig " ) do
-    T.times {|i| Cicero.paragraphs( R[i] ) }
+  b.report( "orig s " ) do
+    T.times {|i| Cicero.sentences( R[i] ) }
   end
     
-  b.report( 'new!' ) do
-    T.times {|i| Cicero.paras( R[i] ) }
+  b.report( 'new! s' ) do
+    T.times {|i| Cicero.sents( R[i] ) }
   end
-
 end

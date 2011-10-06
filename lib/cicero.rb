@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 require_relative "./cicero/cicero_text.rb"
+require_relative "./cicero/ext/Array.rb"
 
 module Cicero
   
@@ -29,7 +30,7 @@ module Cicero
   def self.words(number = 1)
     text = full
     str = ""
-    number.times{ str += "#{text.split(' ')[rand(text.split(' ').size) - 1]} "}
+    number.times{ str += "#{splitter(" ")} "}
     str.strip.gsub(/[,.;'"!?]/,'')
   end
 
@@ -40,18 +41,23 @@ module Cicero
   def self.sentences(number = 1)
     text = full
     str = ""
-    number.times { str += "#{text.split('. ')[rand(text.split('. ').size) - 1].strip}. "}
+    number.times { str += "#{splitter(". ").strip}. "}
     str.strip
+  end
+
+  def self.sents(n = 1)
+    (1..n).reduce("") do |s,j|
+      s << "#{splitter2(". ").strip}. "
+    end
   end
 
   def self.paragraph
     self.paragraphs
   end
   
-  require_relative "./cicero/ext/Array.rb"
   def self.paragraphs(n = 1 )
     (1..n).reduce("") do |s,j|
-      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << full.split(". ").cicero_rand.strip }.join(". ")
+      s << (0..7).inject([]){|mem,i| i == 7 ? mem : mem << splitter2(". ")}.map{|x| x.strip }.join(". ")
     end
   end
 
@@ -61,4 +67,11 @@ module Cicero
     CiceroText.text(@locale)
   end
 
+  def self.splitter( on )
+    full.split(on)[rand(full.split(on).size) - 1]
+  end
+
+  def self.splitter2( on )
+    full.split(". ").cicero_rand 
+  end
 end
