@@ -75,21 +75,21 @@ Ler. Como a aqui. Nós sempre, para seus seguidores! A menos que o telefone era 
 Leia mais perguntas, o autor de Sobre, consectetuer que, clicando aqui, e depois cozido. Leia mais itens. Não há visualização, às vezes menos, eu não vou, vai aqui, e nenhum dos dois. Mantenha seus recursos velhice e administrar, e é a qualidade mais fácil. Gadget é a descrição curta ou longa que, mais e mais do que não. Eu entendo e eu ILGA-ligula. Clique aqui. Operacional, e que o luto não mais, os membros pé aqui na terça-feira, ou massa do arco você precisa aqui. Nós elit. Mantenha seus recursos velhice e administrar, e é a qualidade mais fácil. Nós SEM eros, abre-se para a vantagem de seu tempo para você. Sejam bem-vindos. Este é um leão aqui, nem beber, para enfeitar e da Internet no centro. Sapatos ponto de vista, um leão. E-mail e solicite a escola desenvolver o seu currículo por si só Adicione a sua resposta. Acceptrange contato. 
 Leia mais tardar, arco e, fazer mais. Mas agora, lagos, Legends, nos veículos, você precisa da questão. Por enquanto, consectetuer euismod. Início No More. Vamos correr mais. Nenhum homem sábio: * Senha: ou mais, que a sua aqui, a política do seu. Mas até o mais suas idéias para todos. Nós, e receitas mais e mais. Nós é. É mais do que fácil você ter uma idéia. Até mais meu estilo que é, a, convallis site de seu próprio país. Adicione seu nome aqui. Resultados do nosso e-News aqui. Nós livre. Clique aqui. Consectetuer mais do que o seu preço. Aqui não existe mais, eu nem Vinhos elemento Espíritos não, o invisível. Leia mais.}.gsub("\n",'')
 
-  def self.text(locale = 'LA')
-    case locale.upcase
-    when 'ES'
-      ES
-    when 'EN'
-      EN
-    when 'FR'
-      EN
-    when 'IT'
-      LA
-    when 'PT'
-      LA
-    else
-      LA
+  def self.ipsums # my own little joke, ipsum means self in Latin :)
+    if @ipsums.nil?
+      @ipsums = Hash[ 'ES', ES, 'EN', EN, 'FR', FR, 'PT', PT, 'LA', LA ]
+      @ipsums.default = LA
     end
+    @ipsums
+  end
+
+
+  def self.locales
+    CiceroText.ipsums.keys
+  end
+
+  def self.text(locale = 'LA')
+    CiceroText.ipsums[locale.upcase]
   end
 
 end
